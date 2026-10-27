@@ -1,0 +1,247 @@
+EXOPLANET DATASET COLUMN REFERENCE
+================================
+
+File: exoplanet_details.csv
+All 138 column names appear below in their original CSV order.
+Column names are case-sensitive; PL_NAME and pl_name are separate columns.
+
+Units:
+  AU = astronomical unit; pc = parsec; K = kelvin.
+  BJD = barycentric Julian date; mas = milliarcsecond.
+  Earth/Solar/Jupiter units express values relative to that reference body.
+  Magnitudes describe apparent brightness; smaller values are brighter.
+
+Sources for the standard archive fields:
+  https://exoplanetarchive.ipac.caltech.edu/docs/API_PS_columns.html
+  https://exoplanetarchive.ipac.caltech.edu/docs/atmospheres/atmospheres_columns.html
+
+The final four columns are derived dataset fields. Their names and values
+indicate their purpose, but their exact formulas, thresholds, and inference
+rules require the dataset creator's documentation; they are not established
+by the standard archive column definitions.
+
+SPECTROSCOPY RECORD
+-------------------
+1. PL_NAME - Planet name associated with the spectroscopy record.
+2. SPEC_TYPE - Spectrum type: transmission, eclipse, or direct imaging.
+   This is not a stellar spectral class or a planet discovery method.
+3. AUTHORS - Publication reference describing the spectrum/observation.
+4. NUM_DATAPOINTS - Number of data points in the spectrum.
+5. INSTRUMENT - Instrument used to obtain the spectrum.
+6. FACILITY - Telescope or facility used for the observation.
+7. MINWAVELNG - Minimum wavelength covered by the spectrum, in micrometers.
+8. MAXWAVELNG - Maximum wavelength covered by the spectrum, in micrometers.
+9. MINTRANMID - Earliest observation time, in BJD; for a single epoch,
+   the observation time or transit/eclipse midpoint.
+10. MAXTRANMID - Latest observation time, in BJD; for a single epoch,
+    the observation time or transit/eclipse midpoint.
+11. NOTE - Additional information about the spectrum or its source.
+
+IDENTIFIERS AND SYSTEM COMPOSITION
+---------------------------------
+12. rowid - Archive table row identifier; not a physical planet property.
+13. pl_name - Planet name in the planetary-parameters record.
+14. hostname - Name of the host star/system.
+15. pl_letter - Planet's designation letter within its system, such as b.
+16. hd_name - Host star's Henry Draper catalog identifier.
+17. hip_name - Host star's Hipparcos catalog identifier.
+18. tic_id - Host star's TESS Input Catalog identifier.
+19. gaia_dr2_id - Host star's Gaia Data Release 2 identifier.
+20. gaia_dr3_id - Host star's Gaia Data Release 3 identifier.
+21. default_flag - Whether the archive selected this parameter set as the
+    default for the planet: 1 = yes, 0 = no.
+22. sy_snum - Number of gravitationally bound stars in the system.
+23. sy_pnum - Number of confirmed planets in the system.
+24. sy_mnum - Number of moons in the system.
+25. cb_flag - Circumbinary flag: 1 if the planet orbits a binary star
+    system, 0 otherwise.
+
+DISCOVERY AND DETECTION METADATA
+-------------------------------
+26. discoverymethod - Method by which the planet was discovered.
+27. disc_year - Discovery year.
+28. disc_refname - Discovery publication reference.
+29. disc_pubdate - Publication date of the discovery reference.
+30. disc_locale - Discovery location category, such as ground or space.
+31. disc_facility - Facility associated with the discovery.
+32. disc_telescope - Telescope associated with the discovery.
+33. disc_instrument - Instrument associated with the discovery.
+34. rv_flag - Radial-velocity detection flag: 1 = yes, 0 = no.
+35. pul_flag - Pulsar-timing detection flag: 1 = yes, 0 = no.
+36. ptv_flag - Stellar pulsation-timing-variation detection flag:
+    1 = yes, 0 = no.
+37. tran_flag - Transit detection flag: 1 = yes, 0 = no.
+38. ast_flag - Astrometric detection flag: 1 = yes, 0 = no.
+39. obm_flag - Orbital brightness modulation detection flag:
+    1 = yes, 0 = no.
+40. micro_flag - Microlensing detection flag: 1 = yes, 0 = no.
+41. etv_flag - Eclipse-timing-variation detection flag: 1 = yes, 0 = no.
+42. ima_flag - Imaging detection flag: 1 = yes, 0 = no.
+43. dkin_flag - Disk-kinematics detection flag: whether the planet was
+    inferred from its kinematic influence on the protoplanetary disk.
+44. soltype - Disposition/solution type for this parameter set, such as
+    a published confirmed-planet solution.
+45. pl_controv_flag - Whether the planet's existence has been questioned
+    in the literature: 1 = yes, 0 = no.
+46. pl_refname - Publication reference for this set of planet parameters.
+
+PLANET PHYSICAL AND ORBITAL PARAMETERS
+-------------------------------------
+47. pl_orbper - Orbital period, in days.
+48. pl_orbsmax - Orbital semi-major axis, in AU; an orbital size measure,
+    not necessarily the planet's instantaneous distance from its star.
+49. pl_rade - Planet radius, in Earth radii.
+50. pl_radj - Planet radius, in Jupiter radii.
+51. pl_masse - Planet mass, in Earth masses.
+52. pl_massj - Planet mass, in Jupiter masses.
+53. pl_msinie - Minimum planet mass M*sin(i), in Earth masses, where i is
+    orbital inclination.
+54. pl_msinij - Minimum planet mass M*sin(i), in Jupiter masses.
+55. pl_cmasse - Planet mass calculated as [M*sin(i)]/sin(i), in Earth
+    masses, when a reference supplies minimum mass and inclination but
+    does not report the true mass.
+56. pl_cmassj - Same inclination-corrected calculated mass, in Jupiter
+    masses.
+57. pl_bmasse - Archive's selected best available mass value, in Earth
+    masses; may be true, minimum, or calculated mass. See pl_bmassprov.
+58. pl_bmassj - Same best available mass value, in Jupiter masses.
+59. pl_bmassprov - Provenance/type of the best mass value, identifying
+    whether it represents mass, minimum mass, or calculated mass.
+60. pl_dens - Planet bulk density, in g/cm^3.
+61. pl_orbeccen - Orbital eccentricity, dimensionless; 0 is circular.
+62. pl_insol - Incident stellar energy flux, in units of Earth's received
+    flux (Earth = 1).
+63. pl_eqt - Estimated equilibrium temperature, in K. This is not a
+    measured surface temperature and depends on modeling assumptions.
+64. pl_orbincl - Orbital inclination relative to the sky plane, in degrees;
+    approximately 90 degrees is an edge-on orbit.
+65. pl_tranmid - Mid-transit time, in Julian days using the stated time
+    reference; see pl_tsystemref.
+66. pl_tsystemref - Time-system reference for the time-based parameters.
+67. ttv_flag - Whether transit-timing variations are reported:
+    1 = yes, 0 = no.
+68. pl_imppar - Transit impact parameter: projected planet/star center
+    separation at conjunction, in units of stellar radius.
+69. pl_trandep - Transit depth, in percent of stellar brightness.
+70. pl_trandur - Transit duration, in hours.
+71. pl_ratdor - Orbital semi-major axis divided by stellar radius (a/Rstar).
+72. pl_ratror - Planet radius divided by stellar radius (Rp/Rstar).
+73. pl_occdep - Secondary eclipse/occultation depth, in percent.
+74. pl_orbtper - Time of periastron passage, in Julian days using the
+    stated time reference.
+75. pl_orblper - Argument of periastron, in degrees.
+76. pl_rvamp - Semi-amplitude of the host star's radial-velocity signal
+    caused by the planet, in m/s; not the planet's orbital speed.
+77. pl_projobliq - Sky-projected angle between the stellar spin axis and
+    planetary orbital axis, in degrees; not the planet's axial tilt.
+78. pl_trueobliq - True three-dimensional angle between the stellar spin
+    axis and planetary orbital axis, in degrees.
+
+HOST STAR PARAMETERS
+--------------------
+79. st_refname - Publication reference for the stellar parameters.
+80. st_spectype - Host star's spectral classification.
+81. st_teff - Stellar effective temperature, in K.
+82. st_rad - Stellar radius, in Solar radii.
+83. st_mass - Stellar mass, in Solar masses.
+84. st_met - Stellar metallicity, in dex relative to the Sun; the abundance
+    ratio used is specified by st_metratio.
+85. st_metratio - Ratio defining the metallicity measurement, such as
+    [Fe/H] or [M/H].
+86. st_lum - Base-10 logarithm of stellar luminosity in Solar units,
+    log10(Lstar/Lsun).
+87. st_logg - Base-10 logarithm of stellar surface gravity in cm/s^2.
+88. st_age - Stellar age, in billions of years (Gyr).
+89. st_dens - Stellar density, in g/cm^3.
+90. st_vsin - Projected stellar rotational velocity v*sin(i), in km/s.
+91. st_rotp - Stellar rotation period, in days.
+92. st_radv - Stellar radial velocity, in km/s.
+
+SYSTEM POSITION, MOTION, AND DISTANCE
+------------------------------------
+93. sy_refname - Publication reference for system parameters.
+94. rastr - Right ascension as a sexagesimal string (hours/minutes/seconds).
+95. ra - Right ascension, in decimal degrees.
+96. decstr - Declination as a sexagesimal string (degrees/minutes/seconds).
+97. dec - Declination, in decimal degrees.
+98. glat - Galactic latitude, in degrees.
+99. glon - Galactic longitude, in degrees.
+100. elat - Ecliptic latitude, in degrees.
+101. elon - Ecliptic longitude, in degrees.
+102. sy_pm - Total proper motion across the sky, in mas/year.
+103. sy_pmra - Proper motion in right ascension, in mas/year.
+104. sy_pmdec - Proper motion in declination, in mas/year.
+105. sy_dist - Distance to the system, in pc; not the planet-star distance.
+106. sy_plx - Stellar parallax, in mas.
+
+HOST STAR APPARENT BRIGHTNESS
+----------------------------
+These are stellar/system photometry, not planet surface properties.
+
+107. sy_bmag - Johnson B-band apparent magnitude.
+108. sy_vmag - Johnson V-band apparent magnitude.
+109. sy_jmag - 2MASS J-band apparent magnitude.
+110. sy_hmag - 2MASS H-band apparent magnitude.
+111. sy_kmag - 2MASS Ks-band apparent magnitude.
+112. sy_umag - Sloan u-band apparent magnitude.
+113. sy_gmag - Sloan g-band apparent magnitude.
+114. sy_rmag - Sloan r-band apparent magnitude.
+115. sy_imag - Sloan i-band apparent magnitude.
+116. sy_zmag - Sloan z-band apparent magnitude.
+117. sy_w1mag - WISE W1-band apparent magnitude (about 3.4 micrometers).
+118. sy_w2mag - WISE W2-band apparent magnitude (about 4.6 micrometers).
+119. sy_w3mag - WISE W3-band apparent magnitude (about 12 micrometers).
+120. sy_w4mag - WISE W4-band apparent magnitude (about 22 micrometers).
+121. sy_gaiamag - Gaia G-band apparent magnitude.
+122. sy_icmag - Cousins I-band apparent magnitude. Entirely missing in
+     this copy of the dataset.
+123. sy_tmag - TESS-band apparent magnitude.
+124. sy_kepmag - Kepler-band apparent magnitude.
+
+ARCHIVE DATES AND AVAILABLE DATA COUNTS
+--------------------------------------
+125. rowupdate - Date the archive row was last updated.
+126. pl_pubdate - Publication date of the planet-parameter reference.
+127. releasedate - Date the parameter set was released in the archive.
+128. pl_nnotes - Number of archive notes associated with the planet.
+129. st_nphot - Number of photometric time-series records available for
+     the star, including light curves.
+130. st_nrvc - Number of radial-velocity time series available for the star.
+131. st_nspec - Number of stellar spectra measurements available.
+132. pl_nespec - Number of planet eclipse spectra measurements available.
+133. pl_ntranspec - Number of planet transmission spectra measurements
+     available.
+134. pl_ndispec - Number of planet direct-imaging spectra measurements
+     available.
+
+DERIVED DATASET FIELDS
+---------------------
+135. esi - Earth Similarity Index: a derived Earth-similarity score.
+     Verify its inputs and formula with the dataset creator; it is not
+     evidence of life or a measured probability of habitability.
+136. habitability_category - Assigned habitability class. This dataset
+     contains Non-Habitable, Marginally Habitable, Moderately Habitable,
+     and Earth-like (High Habitability Potential). Verify the label rules.
+137. planet_type - Assigned planet classification, such as Gas Giant or
+     Unknown. Verify the classification rules with the dataset creator.
+138. inferred_atmosphere - Inferred atmospheric classification, including
+     an insufficient-data category; not necessarily an observed atmosphere.
+
+CLEANING AND MODELING CAUTIONS
+-----------------------------
+* shape is (rows, columns). (0, 138) means zero records and 138 columns.
+* dropna(subset=[...]) removes a row if ANY listed value is missing.
+  It does not select or remove columns.
+* Requiring all alternative masses, orbital parameters, and transit
+  measurements can leave no rows. Different observing methods provide
+  different subsets of measurements.
+* Values in Earth and Jupiter units describe the same underlying quantity;
+  they should not be treated as independent measurements.
+* Missing does not mean zero. Text such as "Unknown" is not a pandas null
+  and will not be removed by dropna() unless explicitly converted.
+* Do not use habitability_category as an input when it is your target.
+  Verify whether esi, planet_type, and inferred_atmosphere leak label rules.
+* In this dataset, some missing esi values have Non-Habitable labels.
+  Verify whether these indicate actual classification or missing evidence.
+* Multiple records can describe the same planet. For planet-level
+  prediction, keep each planet entirely in training or entirely in testing.
